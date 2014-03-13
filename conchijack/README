@@ -1,0 +1,15 @@
+Installation:
+
+Download dpkt: https://code.google.com/p/dpkt/downloads/list
+$tar -xvf <directory>.tar.gz
+$cd <directory>
+$python setup.py install
+
+Download pybgpdump:
+https://jon.oberheide.org/pybgpdump/
+$tar -xvf <directory>.tar.gz
+$cd <directory>
+$python setup.py install
+
+TODO: Not sure if libbgpdump is required 
+

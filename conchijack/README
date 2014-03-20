@@ -13,3 +13,25 @@ $python setup.py install
 
 TODO: Not sure if libbgpdump is required 
 
+DEPENDENCIES:
+
+Install libdnet:
+---------------------------------------------------------
+(Beware - 1.11 has issues with the python version we are using)
+wget http://libdnet.googlecode.com/files/libdnet-1.12.tgz
+tar -zxvf libdnet-1.12.tgz
+cd libdnet-1.12/
+./configure && make
+sudo make install
+
+Fixing libdnet
+
+sudo cp /usr/local/lib/libdnet.1.0.1 /usr/local/lib/libdnet.so.1.0.1
+sudo ldconfig
+sudo updatedb
+
+$cd python
+$python setup.py build
+$sudo python setup.py install 
+$python test.py
+

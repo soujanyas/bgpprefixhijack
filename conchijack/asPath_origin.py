@@ -1,4 +1,7 @@
-#!/usr/bin/env python
+ #!i/usr/bin/env python
+'''
+Python module to capture and analyze data for concurrent prefix hijacks
+'''
 
 from optparse import OptionParser
 from dpkt import bgp

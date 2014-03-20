@@ -1,2 +1,2 @@
-Git repository for CSE594 Internet Censorshup project
+Git repository for CSE594 Internet Censorship project
 

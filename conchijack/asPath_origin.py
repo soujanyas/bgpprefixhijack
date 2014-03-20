@@ -4,7 +4,7 @@ from optparse import OptionParser
 from dpkt import bgp
 from pybgpdump import BGPDump
 import sys,time
-#import dnet
+import dnet
 
 DELIMS = ( ('', ''),
            ('{', '}'),  # AS_SET
@@ -26,7 +26,6 @@ def path_to_str(path):
 	Filter out only the last AS in the path
 	'''
         print(seg.path[seg.len-1])
-    #return str
 
 def main():
     parser = OptionParser()
@@ -36,17 +35,17 @@ def main():
     out = sys.stdout.write
     dump = BGPDump(options.input)
     for mrt_h, bgp_h, bgp_m in dump:
-        path = ''
+	'''
+	Print the origin from the AS Path attribute
+	'''
         for attr in bgp_m.update.attributes:
-            if attr.type == bgp.AS_PATH:
-                path_to_str(attr.as_path)	
-                break
-        time_str = '%s|%s' % ('BGP4MP', mrt_h.ts)
-
-	for route in bgp_m.update.announced:
-                out('.........................%s|A|%d %d\n' % 
-                    (time_str, bgp_h.src_as,
-                     route.len))
+           if attr.type == bgp.AS_PATH:
+                path_to_str(attr.as_path)
+	''' 
+	To print the BGP announce messages
+	'''
+        for route in bgp_m.update.announced:
+	        out('%s/%d\n' % (dnet.ip_ntoa(route.prefix), route.len))
 
 if __name__ == '__main__':
     main()

@@ -1,4 +1,4 @@
-#!/bin/env/python
+#!/usr/bin/python3
 
 '''
 Python module to capture BGP hijack data from Argus

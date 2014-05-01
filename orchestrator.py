@@ -26,8 +26,11 @@ if __name__ == "__main__":
        table['as'] = a_res['origin'] + a_res['bad_path_segment']
        table['cyclops'] = cyclops_capture.has_transient_results(from_time, to_time, a_res)
        table_list.append(table)
+    print ("-------------------------------------------------------------------")
+    print ("cyclops\tas\t ")
+    for table in table_list:
+      print ("%s\t %s" % (table['cyclops'], table['as']))
 
-    print (table_list)
        #nether_capture.get_results(a_res)
         
 

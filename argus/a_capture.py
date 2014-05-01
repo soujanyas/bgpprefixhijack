@@ -61,7 +61,6 @@ class ArgusCapture:
   def in_range(self, start_date, end_date, timestamp):
     start = time.mktime(time.strptime(start_date, time_format))
     end = time.mktime(time.strptime(end_date, time_format))
-    print ("###Start : %d End : %d" % (start, end))
     #print("%s -> %s : %s" %(start, end, timestamp))
     if float(timestamp) > start and float(timestamp) < end:
       return True

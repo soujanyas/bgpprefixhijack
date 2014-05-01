@@ -8,8 +8,12 @@ import urllib.request
 import re
 import time
 #/home/soujanya/opt/Python-3.3.5/python a_capture.py
-NUM_ALARMS = 1000
-time_format = "%Y-%m-%d %H:%M:%S"
+NUM_ALARMS = 1200
+time_format = "%Y-%m-%d"
+
+#"2014-04-01 01:01:01", "2014-04-30 01:01:01"
+from_time = "2014-04-23"
+to_time = "2014-04-30"
 
 class ArgusCapture:
 
@@ -46,8 +50,9 @@ class ArgusCapture:
     while i < NUM_ALARMS:
       res = self.get(url + "%d,%d" %(i, i + 99))
       results.extend(res)
+      print ("%d -> %d" % (i, i+100))
       i += 100
-      #print ("%d -> %d" % (i, i+100))
+
     return results
 
       #for index, item in enumerate(res):
@@ -56,6 +61,7 @@ class ArgusCapture:
   def in_range(self, start_date, end_date, timestamp):
     start = time.mktime(time.strptime(start_date, time_format))
     end = time.mktime(time.strptime(end_date, time_format))
+    print ("###Start : %d End : %d" % (start, end))
     #print("%s -> %s : %s" %(start, end, timestamp))
     if float(timestamp) > start and float(timestamp) < end:
       return True
@@ -95,8 +101,10 @@ def test_in_range():
 
 if __name__ == '__main__':
     argus_capture = ArgusCapture()
-    argus_capture.get_alarms_in_range("2012-04-01 01:01:01", "2012-04-30 01:01:01")
-    argus_capture.get_anomalies_in_range("2013-12-01 01:01:01", "2014-01-01 01:01:01")
+    #argus_capture.get_alarms_in_range("2012-04-01 01:01:01", "2012-04-30 01:01:01")
+    #argus_capture.get_anomalies_in_range("2013-12-01 01:01:01", "2014-01-01 01:01:01")
+    argus_capture.get_alarms_in_range(from_time, to_time)
+    #argus_capture.get_anomalies_in_range("2013-12-01 01:01:01", "2014-01-01 01:01:01")
     test_in_range()
     #for index, item in enumerate(res):
     #  print ("%d : time:%s" % (index, item["timestamp"]))

@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+__author__ = 'soujanya'
 import urllib.request
 
 
@@ -26,8 +27,8 @@ class CyclopsCapture:
       seg = a_res['bad_path_segment'].replace(" ", "+")
       asn = a_res['origin'] + seg
       url = url.replace("$asn", asn)
-      print("Searching for ASN: %s" % asn)
-      print("Constructed URL: %s" % url)
+      print("CYCLOPS: Searching for ASN: %s" % asn)
+      print("CYCLOPS: Constructed URL: %s" % url)
 
       return url
 

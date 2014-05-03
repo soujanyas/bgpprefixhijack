@@ -48,8 +48,6 @@ if __name__ == "__main__":
                                              table['cyc_pl'], table['nether'],
                                              table['score'], table['prefix'],
                                              table['as']))
-
-       #nether_capture.get_results(a_res)
         
 
     

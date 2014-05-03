@@ -9,6 +9,9 @@ CONTACT = 4
 SCORE = 5
 BLAME = 6
 
+#Reference: https://docs.python.org/3/library/html.parser.html
+#           http://strftime.org/
+
 
 from html.parser import HTMLParser
 import time

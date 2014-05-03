@@ -16,6 +16,7 @@ BLAME = 6
 from html.parser import HTMLParser
 import time
 import urllib.request
+import random
 
 def __init__():
   pass
@@ -94,7 +95,10 @@ class NetherCapture(HTMLParser):
 
   def count_nether_anam(self, from_time, to_time):
     a_res = {}
-    return self.get_nether_data(from_time, to_time, a_res)
+    data = self.get_nether_data(from_time, to_time, a_res)
+    ##testing
+    data = random.randrange(2000, 6000)
+    return data
 
   def has_nether_anam(self, from_time, to_time, a_res):
     return self.get_nether_data(from_time, to_time, a_res) > 0

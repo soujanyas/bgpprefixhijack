@@ -59,10 +59,14 @@ class NetherCapture(HTMLParser):
 
   def make_url(self, a_res):
     url = self.nether_url
-    url = url.replace("$prefix", a_res['prefix'].replace("/","%2F"))
-    asn = a_res['bad_path_segment'].replace(" ", "+")
-    asn = a_res['origin'] + asn
+    asn = ""
+    prefix = ""
+    if(len(a_res) > 0):
+      prefix = a_res['prefix'].replace("/","%2F")
+      asn = a_res['bad_path_segment'].replace(" ", "+")
+      asn = a_res['origin'] + asn
     url = url.replace("$as_path", asn)
+    url = url.replace("$prefix", prefix)
     return url
 
   def parse_nether_results(self, data_stream, from_time, to_time):
@@ -87,6 +91,10 @@ class NetherCapture(HTMLParser):
     print("NETHER: Constructed URL: %s" % url)
     n_data = urllib.request.urlopen(url).read().decode('utf-8')
     return self.parse_nether_results(n_data, from_time, to_time)
+
+  def count_nether_anam(self, from_time, to_time):
+    a_res = {}
+    return self.get_nether_data(from_time, to_time, a_res)
 
   def has_nether_anam(self, from_time, to_time, a_res):
     return self.get_nether_data(from_time, to_time, a_res) > 0

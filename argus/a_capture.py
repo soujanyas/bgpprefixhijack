@@ -8,7 +8,7 @@ import urllib.request
 import re
 import time
 #/home/soujanya/opt/Python-3.3.5/python a_capture.py
-NUM_ALARMS = 2000
+NUM_ALARMS = 1200
 time_format = "%Y-%m-%d"
 
 #"2014-04-01 01:01:01", "2014-04-30 01:01:01"

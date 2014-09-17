@@ -95,7 +95,7 @@ class NetherCapture(HTMLParser):
 
   def count_nether_anam(self, from_time, to_time):
     a_res = {}
-    data = self.get_nether_data(from_time, to_time, a_res)
+    #data = self.get_nether_data(from_time, to_time, a_res)
     ##testing
     data = random.randrange(2000, 6000)
     return data
